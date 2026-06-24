@@ -1,4 +1,6 @@
-# TinyBatteryNet: Microcontroller-Deployable Deep Learning for Battery RUL Prediction (Full Code and Results will be public after the manuscript is accepted for publication)
+# TinyBatteryNet: Microcontroller-Deployable Deep Learning for Battery RUL Prediction
+
+**Full Code and Results will be public after the manuscript is accepted for publication**
 
 Welcome to the official repository for **TinyBatteryNet**, a family of micro-sized, microcontroller-deployable deep learning architectures designed for real-time Remaining Useful Life (RUL) prediction on edge devices (like Battery Management Systems - BMS).
 
