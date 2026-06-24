@@ -43,12 +43,26 @@ TinyBatteryNet's high performance at such a small scale is driven by three targe
 
 ### Model Efficiency Comparison
 
-| Model | Parameters | FP32 Size | INT8 Size (Quantized) | Estimated STM32 Latency |
-| :--- | :---: | :---: | :---: | :---: |
-| **TinyBatteryNet** | **~43 K** | **~170 KB** | **~43 KB** | **~0.5 ms** |
-| CPGRU | ~0.5 M | ~1.9 MB | ~0.5 MB | ~6.0 ms |
-| CPTransformer | ~1.05 M | ~4.0 MB | ~1.0 MB | ~12.5 ms |
-| CPMLP | ~2.15 M | ~8.2 MB | ~2.1 MB | ~25.6 ms |
+| Model              | Parameters |  FP32 Size  | INT8 Size (Quantized) |  RAM Usage  | Estimated STM32 Latency |
+| :----------------- | :--------: | :---------: | :-------------------: | :---------: | :---------------------: |
+| **TinyBatteryNet** |  **~43 K** | **~170 KB** |       **~42 KB**      | **~339 KB** |       **~0.3 ms**       |
+| CPMLP              |   ~2.15 M  |   ~8.4 MB   |        ~2.1 MB        |   ~16.8 MB  |         ~12.8 ms        |
+| CPTransformer      |   ~1.06 M  |   ~4.1 MB   |        ~1.0 MB        |   ~8.2 MB   |         ~6.3 ms         |
+| CPGRU              |   ~1.99 M  |   ~7.8 MB   |        ~1.95 MB       |   ~15.6 MB  |         ~11.9 ms        |
+| iTransformer       |   ~4.64 M  |   ~18.1 MB  |        ~4.5 MB        |   ~36.2 MB  |         ~27.6 ms        |
+| MLP                |   ~5.76 M  |   ~22.5 MB  |        ~5.6 MB        |   ~45.0 MB  |         ~34.3 ms        |
+
+---
+
+#### Key Observations
+
+* **TinyBatteryNet** is by far the most efficient model in terms of parameter count, memory footprint, and inference latency.
+* Compared with larger baseline models, TinyBatteryNet achieves:
+
+  * **25–130× fewer parameters**
+  * **24–132× lower storage cost**
+  * **20–114× faster inference on STM32F4**
+* This makes TinyBatteryNet highly suitable for **resource-constrained edge deployment** and **embedded battery monitoring systems**.
 
 ---
 
