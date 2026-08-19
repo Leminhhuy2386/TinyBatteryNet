@@ -11,7 +11,7 @@ TinyBatteryNet achieves state-of-the-art results while keeping parameter counts 
 ## ⚡ Highlights
 
 *   **Microcontroller-Friendly Footprint**: With only **~43 K parameters** and a **~170 KB** FP32 size (**~43 KB** INT8 quantized), TinyBatteryNet fits easily within the flash/RAM budget of STM32-class devices (e.g., 512 KB flash, 128 KB RAM).
-*   **Real-time Edge Inference**: Run INT8-quantized inference in roughly **0.5 ms** on a 168 MHz STM32 microcontroller.
+*   **Real-time Edge Inference**: Run INT8-quantized inference in roughly **0.32 ms** on a 168 MHz STM32 microcontroller.
 *   **Domain-Wide Superiority**: TinyBatteryNet beats the domain winners from the ACM KDD 2025 *BatteryLife* benchmark across all 4 battery domains (**Li-ion**, **Zn-ion**, **Na-ion**, and **CALB**).
 
 ---
@@ -45,7 +45,7 @@ TinyBatteryNet's high performance at such a small scale is driven by three targe
 
 | Model              | Parameters |  FP32 Size  | INT8 Size (Quantized) |  RAM Usage  | Estimated STM32 Latency |
 | :----------------- | :--------: | :---------: | :-------------------: | :---------: | :---------------------: |
-| **TinyBatteryNet** |  **~43 K** | **~170 KB** |       **~42 KB**      | **~339 KB** |       **~0.3 ms**       |
+| **TinyBatteryNet** |  **~43 K** | **~170 KB** |       **~42 KB**      | **~44.2 KB** |       **~0.3 ms**       |
 | CPMLP              |   ~2.15 M  |   ~8.4 MB   |        ~2.1 MB        |   ~16.8 MB  |         ~12.8 ms        |
 | CPTransformer      |   ~1.06 M  |   ~4.1 MB   |        ~1.0 MB        |   ~8.2 MB   |         ~6.3 ms         |
 | CPGRU              |   ~1.99 M  |   ~7.8 MB   |        ~1.95 MB       |   ~15.6 MB  |         ~11.9 ms        |
