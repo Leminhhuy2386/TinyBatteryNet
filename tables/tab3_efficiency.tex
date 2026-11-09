@@ -1,10 +1,12 @@
 \begin{table}[t]
 \centering
-\caption{Model efficiency. STM32F4 inference time estimated at 168\,MHz with INT8 SIMD acceleration. Peak RAM includes weights + activations ($\approx$2$\times$).}
+\caption{Model efficiency. STM32F4 inference time is estimated at 168\,MHz with INT8 SIMD acceleration. Peak RAM includes weights plus activations ($\approx$2$\times$).}
 \label{tab:efficiency}
-\begin{tabular}{lrrrrr}
+\small
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lrrrrr@{}}
 \toprule
-\textbf{Model} & \textbf{Params} & \textbf{FP32 (KB)} & \textbf{INT8 (KB)} & \textbf{RAM (KB)} & \textbf{STM32 (ms)} \\
+\textbf{Model} & \textbf{Params} & \makecell{\textbf{FP32}\\\textbf{(KB)}} & \makecell{\textbf{INT8}\\\textbf{(KB)}} & \makecell{\textbf{RAM}\\\textbf{(KB)}} & \makecell{\textbf{Time}\\\textbf{(ms)}} \\
 \midrule
 \textit{TinyBatteryNet} & 43,379 & 169.4 & 42.4 & 338.9 & 0.3 \\
 CPMLP & 2,151,041 & 8402.5 & 2100.6 & 16805.0 & 12.8 \\
@@ -13,5 +15,5 @@ CPGRU & 1,993,345 & 7786.5 & 1946.6 & 15573.0 & 11.9 \\
 iTransformer & 4,635,649 & 18108.0 & 4527.0 & 36216.0 & 27.6 \\
 MLP & 5,760,129 & 22500.5 & 5625.1 & 45001.0 & 34.3 \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 \end{table}

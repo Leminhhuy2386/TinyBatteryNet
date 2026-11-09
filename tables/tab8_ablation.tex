@@ -2,7 +2,7 @@
 \centering
 \caption{Ablation study (post-hoc inference-time component removal) on Li-ion, Zn-ion, Na-ion, and CALB using pre-trained TinyBatteryNetV1R weights.}
 \label{tab:ablation}
-\begin{tabular}{lrrrrrrrr}
+\begin{tabular*}{\tblwidth}{@{}LRRRRRRRR@{}}
 \toprule
 \textbf{Variant} & \multicolumn{2}{c}{\textbf{Li-ion}}  & \multicolumn{2}{c}{\textbf{Zn-ion}}  & \multicolumn{2}{c}{\textbf{Na-ion}}  & \multicolumn{2}{c}{\textbf{CALB}} \\
  & MAPE$\downarrow$ & Acc@15\%$\uparrow$  & MAPE$\downarrow$ & Acc@15\%$\uparrow$  & MAPE$\downarrow$ & Acc@15\%$\uparrow$  & MAPE$\downarrow$ & Acc@15\%$\uparrow$ \\
@@ -13,5 +13,5 @@ w/o SE block & 0.614 & 13.4 & 0.354 & 22.6 & 0.297 & 40.0 & 0.908 & 18.7 \\
 w/o Cycle gate & 1.470 & 11.6 & 2.094 & 3.2 & 0.274 & 24.2 & 2.092 & 1.0 \\
 GRU → MeanPool & 0.599 & 17.3 & 1.659 & 3.7 & 0.881 & 20.0 & 1.511 & 16.3 \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 \end{table}

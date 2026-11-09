@@ -17,15 +17,23 @@ TinyBatteryNet achieves state-of-the-art accuracy across diverse battery chemist
   * **0.16 ms** on **STM32F767ZI** (ARM Cortex-M7 @ 216 MHz) with 44.2 KB peak SRAM.
   * **0.30 ms** on **STM32F401RE** (ARM Cortex-M4 @ 84/168 MHz).
   * **20–114× faster inference** and **25–130× fewer parameters** than state-of-the-art benchmark baselines.
-* **Domain-Wide Superiority**: Outperforms all paper domain winners from the ACM KDD 2025 *BatteryLife* benchmark across all 4 battery domains (**Li-ion**, **Zn-ion**, **Na-ion**, and **CALB**).
+* **Domain-Wide Superiority**: Outperforms all domain winners from the ACM KDD 2025 *BatteryLife* benchmark across all 4 battery domains (**Li-ion**, **Zn-ion**, **Na-ion**, and **CALB**).
 * **Minimal Quantization Loss**: Post-training INT8 dynamic quantization preserves or even slightly improves accuracy while reducing memory size by **~66%**.
+
+---
+
+## 🌟 General Pipeline & System Overview
+
+<p align="center">
+  <img src="figures/figure_general.png" alt="General Pipeline Overview" width="900"/>
+</p>
 
 ---
 
 ## 🏗️ Architecture & Core Inductive Biases
 
 <p align="center">
-  <img src="figures/fig1_architecture.png" alt="TinyBatteryNet Architecture" width="850"/>
+  <img src="figures/figure_model.png" alt="TinyBatteryNet Model Architecture" width="900"/>
 </p>
 
 TinyBatteryNet's competitive advantage at ultra-small scale stems from three targeted inductive biases:
@@ -36,7 +44,7 @@ TinyBatteryNet's competitive advantage at ultra-small scale stems from three tar
 4. **Lightweight Temporal GRU**: Summarizes multi-cycle temporal degradation over up to 100 early observation cycles with minimal parameter overhead.
 
 <p align="center">
-  <img src="figures/fig_tiny_innovation.png" alt="TinyBatteryNet Innovations" width="700"/>
+  <img src="figures/fig_tiny_innovation.png" alt="TinyBatteryNet Inductive Biases and Innovations" width="750"/>
 </p>
 
 ---
@@ -45,7 +53,7 @@ TinyBatteryNet's competitive advantage at ultra-small scale stems from three tar
 
 ### 1. Comparison with ACM KDD 2025 BatteryLife Baselines
 
-Evaluated on the standardized **BatteryLife** benchmark (MAPE ↓ / Acc@15% ↑):
+Evaluated on the standardized **BatteryLife** benchmark across three random seeds (MAPE ↓ / Acc@15% ↑):
 
 | Domain | Best Paper Baseline | Baseline MAPE | **TinyBatteryNet (V1R) MAPE** ↓ | **TinyBatteryNet (V1R) Acc@15%** ↑ | Improvement ($\Delta\text{MAPE}$) |
 | :--- | :--- | :---: | :---: | :---: | :---: |
@@ -83,25 +91,34 @@ Edge AI latency and peak memory profiles on ARM Cortex-M hardware (validated via
 
 ## 🔬 In-Depth Experimental Studies
 
-### EXP-A: Cycle Gate Weight Trajectories
-The learned gate values $g_{i, l} \in (0, 1)$ monotonically correlate with remaining life: early short-lived cells receive suppressed gate weights, while long-lived stable cells receive high gate weights.
+### 1. Retrained Component Ablation Study
+Ablation analysis demonstrating the individual contribution of the Multi-Scale Pyramid, Squeeze-and-Excitation attention, and Learnable Cycle Gate:
 
 <p align="center">
-  <img src="figures/fig_gate_weights_per_domain.png" alt="Cycle Gate Weights" width="800"/>
+  <img src="figures/fig_ablation_retrained.png" alt="Retrained Ablation Results" width="800"/>
 </p>
 
 ---
 
-### EXP-B: Chemistry-Adaptive SE Attention
-The Squeeze-and-Excitation block automatically adapts attention profiles across different battery chemistries (e.g. sharp feature focusing on Li-ion vs. broader gain on noisy Zn-ion coin cells):
+### 2. Multi-Domain Interpretability & Saliency Maps
+Gradient-based saliency analyses showing how TinyBatteryNet focuses on critical electrochemical phase transitions and voltage relaxation segments across different chemistries:
 
 <p align="center">
-  <img src="figures/fig_se_weights_heatmap.png" alt="SE Attention Heatmap" width="800"/>
+  <img src="figures/fig_saliency_combined.png" alt="Multi-Domain Saliency Maps" width="850"/>
 </p>
 
 ---
 
-### EXP-D: Post-Training INT8 Dynamic Quantization
+### 3. Latent Representation Space (t-SNE)
+t-SNE clustering reveals distinct latent domain separation and smooth degradation trajectories corresponding to progressive cell aging:
+
+<p align="center">
+  <img src="figures/fig_tsne_combined_4panel.png" alt="t-SNE Latent Space Clustering" width="850"/>
+</p>
+
+---
+
+### 4. Post-Training INT8 Dynamic Quantization
 
 | Domain | FP32 Size (KB) | FP32 MAPE (%) | FP32 Acc@15% | INT8 Size (KB) | INT8 MAPE (%) | INT8 Acc@15% |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -112,7 +129,7 @@ The Squeeze-and-Excitation block automatically adapts attention profiles across 
 
 ---
 
-### EXP-E: Early Observation Window Sensitivity ($L \in \{20, 50, 100\}$)
+### 5. Early Observation Window Sensitivity ($L \in \{20, 50, 100\}$)
 
 | Domain | $L = 20$ Cycles MAPE (%) | $L = 50$ Cycles MAPE (%) | $L = 100$ Cycles MAPE (%) |
 | :--- | :---: | :---: | :---: |
@@ -123,7 +140,7 @@ The Squeeze-and-Excitation block automatically adapts attention profiles across 
 
 ---
 
-### EXP-G: Learnable Cycle Gate vs. Fixed Discard Rules
+### 6. Learnable Cycle Gate vs. Fixed Discard Rules
 
 | Strategy | Li-ion MAPE | Zn-ion MAPE | Na-ion MAPE | CALB MAPE |
 | :--- | :---: | :---: | :---: | :---: |

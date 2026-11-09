@@ -2,7 +2,7 @@
 \centering
 \caption{Performance comparison: MAPE\,$\downarrow$ and Acc@15\%\,$\uparrow$. Paper baselines (single reported value from \citet{han2024batterylife}); TinyBatteryNet shows mean results across three random seeds. \textbf{Bold} = best per column.}
 \label{tab:main_comparison}
-\begin{tabular}{lcccccccc}
+\begin{tabular*}{\tblwidth}{@{}LCCCCCCCC@{}}
 \toprule
 \textbf{Model} & \multicolumn{2}{c}{\textbf{Li-ion}} & \multicolumn{2}{c}{\textbf{Zn-ion}} & \multicolumn{2}{c}{\textbf{Na-ion}} & \multicolumn{2}{c}{\textbf{CALB}} \\
 \textbf{Model} & MAPE$\downarrow$ & Acc@15\%$\uparrow$ & MAPE$\downarrow$ & Acc@15\%$\uparrow$ & MAPE$\downarrow$ & Acc@15\%$\uparrow$ & MAPE$\downarrow$ & Acc@15\%$\uparrow$ \\
@@ -20,12 +20,12 @@ CPTransformer & $0.184_{\pm 0.003}$ & $57.3_{\pm 1.6}$ & $0.515_{\pm 0.067}$ & $
 CNN & $0.337_{\pm 0.068}$ & $37.1_{\pm 5.0}$ & $0.928_{\pm 0.093}$ & $11.5_{\pm 2.9}$ & $0.307_{\pm 0.047}$ & $27.3_{\pm 2.7}$ & $0.278_{\pm 0.011}$ & $58.2_{\pm 3.2}$ \\
 MICN & $0.249_{\pm 0.004}$ & $49.4_{\pm 1.9}$ & $0.579_{\pm 0.101}$ & $22.7_{\pm 12.7}$ & $0.305_{\pm 0.040}$ & $33.5_{\pm 6.5}$ & $0.233_{\pm 0.050}$ & $47.1_{\pm 25.7}$ \\
 \midrule
-CPGRU & $0.189_{\pm 0.008}$ & $58.5_{\pm 1.3}$ & $0.616_{\pm 0.049}$ & $28.9_{\pm 7.6}$ & $0.298_{\pm 0.063}$ & $20.3_{\pm 16.0}$ & $0.141_{\pm 0.012}$ & $68.1_{\pm 17.8}$ \\
+CPGRU & $0.189_{\pm 0.008}$ & $58.5_{\pm 1.3}$ & $0.616_{\pm 0.049}$ & $\textbf{28.9}_{\pm 7.6}$ & $0.298_{\pm 0.063}$ & $20.3_{\pm 16.0}$ & $0.141_{\pm 0.012}$ & $68.1_{\pm 17.8}$ \\
 CPBiGRU & $0.190_{\pm 0.001}$ & $56.6_{\pm 3.4}$ & $0.774_{\pm 0.202}$ & $19.3_{\pm 15.6}$ & $0.282_{\pm 0.055}$ & $39.5_{\pm 0.8}$ & $0.160_{\pm 0.015}$ & $68.6_{\pm 6.3}$ \\
 CPLSTM & $0.196_{\pm 0.006}$ & $58.5_{\pm 2.0}$ & $0.932_{\pm 0.227}$ & $8.5_{\pm 2.8}$ & $0.272_{\pm 0.051}$ & $38.6_{\pm 0.9}$ & $0.156_{\pm 0.073}$ & $61.3_{\pm 15.3}$ \\
 CPBiLSTM & $0.191_{\pm 0.007}$ & $42.1_{\pm 25.5}$ & $0.645_{\pm 0.049}$ & $15.0_{\pm 10.4}$ & $0.299_{\pm 0.043}$ & $39.9_{\pm 0.1}$ & $0.173_{\pm 0.075}$ & $66.3_{\pm 24.7}$ \\
 \midrule
-\textit{TinyBatteryNet} & $\textbf{0.170}_{\pm 0.005}$ & $\textbf{62.9}_{\pm 1.3}$ & $\textbf{0.368}_{\pm 0.016}$ & $25.1_{\pm 5.6}$ & $\textbf{0.232}_{\pm 0.004}$ & $40.0_{\pm 0.0}$ & $\textbf{0.133}_{\pm 0.011}$ & $70.2_{\pm 3.8}$ \\
+\textit{TinyBatteryNet} & $\textbf{0.170}_{\pm 0.005}$ & $\textbf{62.9}_{\pm 1.3}$ & $\textbf{0.368}_{\pm 0.016}$ & $\textbf{25.1}_{\pm 5.6}$ & $\textbf{0.232}_{\pm 0.004}$ & $\textbf{40.0}_{\pm 0.0}$ & $\textbf{0.133}_{\pm 0.011}$ & $\textbf{70.2}_{\pm 3.8}$ \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 \end{table*}

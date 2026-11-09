@@ -24,3 +24,15 @@ log/
 outs/
 wandb/
 .venv/
+
+# Manuscript and submission files
+paper/
+paper-final/
+*manuscript*
+*cover_letter*
+*.aux
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex

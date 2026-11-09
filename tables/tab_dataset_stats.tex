@@ -1,0 +1,42 @@
+\begin{table*}[t]
+\centering
+\caption{BatteryLife benchmark dataset characteristics \citep{han2024batterylife}.
+$N$: batteries with valid EOL labels used in training/evaluation.
+Chemistry: cathode material; all Li-ion anodes are graphite.
+$\dagger$~UL-PUR: training split only.
+Split-based counts use the current split definition (git commit ad2c382,
+2025-05-11).
+not disclosed (n.d.). Capacity (Cap.) is reported in ampere-hours (Ah) unless milliampere-hours (mAh) are shown; voltage is reported in volts (V). Nickel cobalt manganese oxide (NCM) is treated as an NMC-family cathode label.}
+\label{tab:dataset_stats}
+\renewcommand{\arraystretch}{1.05}
+\small
+\begin{tabular*}{\tblwidth}{@{}LLRCCCR@{}}
+\toprule
+\textbf{Group} & \textbf{Dataset} & \textbf{$N$} & \textbf{Chemistry (cathode)}
+  & \textbf{Cap (Ah)} & \textbf{Voltage (V)} & \textbf{EOL (cycles)} \\
+\midrule
+\multirow{14}{*}{Li-ion}
+  & CALCE     &  13 & LCO                   & 1.1--1.35 & 2.7--4.2  & 448--829   \\
+  & HNEI      &  14 & LCO\,+\,NMC           & 2.8       & 3.0--4.3  & 218--266   \\
+  & HUST      &  77 & LFP                   & 1.1       & 2.0--3.6  & 1164--2768 \\
+  & MATR      & 169 & LFP                   & 1.1       & 2.0--3.6  & 147--2237  \\
+  & MICH      &  40 & NMC                   & 2.36      & 3.0--4.2  & 191--457   \\
+  & MICH-EXP  &  12 & NMC                   & 5.0       & 3.0--4.2  & 1--269     \\
+  & RWTH      &  48 & NMC                   & 1.85      & 3.5--3.9  & 510--778   \\
+  & SNL       &  50 & NCA/NMC/LFP           & 1.1--3.2  & 2.0--4.2  & 143--3842  \\
+  & Stanford  &  41 & NMC                   & 0.24      & 3.0--4.4  & 473--1004  \\
+  & ISU-ILCC  & 240 & NMC                   & 0.25      & 3.0--4.2  & 16--4999   \\
+  & Tongji    & 108 & NCA/NCM               & 2.5--3.5  & 2.5--4.2  & 18--569    \\
+  & UL-PUR$\dagger$ & 2 & NCA               & 3.4       & 2.7--4.2  & 159--259   \\
+  & XJTU      &  23 & NMC                   & 2.0       & 2.5--4.2  & 130--418   \\
+\cmidrule(l){2-7}
+  & \textit{Subtotal} & \textit{837} & LCO/LFP/NMC/NCA/NCM & 0.24--5.0 & 2.0--4.4 & \textit{1--4999} \\
+\midrule
+Zn-ion & ZN-coin & 100 & Zn\,/\,MnO$_2$ & 0.22--0.48 mAh & 0.8--1.8 & 12--1621 \\
+\midrule
+Na-ion & NA-ion  &  31 & Na-ion (n.d.)    & 1.0      & 2.0--4.0 & 102--307 \\
+\midrule
+CALB   & CALB    &  27 & NMC              & 58       & 2.2--4.35 & 104--1411 \\
+\bottomrule
+\end{tabular*}
+\end{table*}
