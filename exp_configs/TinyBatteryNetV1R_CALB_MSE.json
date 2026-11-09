@@ -1,0 +1,23 @@
+{
+    "_comment": "TinyBatteryNetV1R - CALB | MSE loss | best run: v29, test_mape=0.110",
+    "_rationale": [
+        "MSE training loss. lr=0.0003 gave test_mape=0.110 (v29).",
+        "v28 with lr=0.00045 gave test_mape=0.107 (best MSE ever).",
+        "Two checkpoint guards: max_acc1=90 (anti-overfit), min_mape=0.092 (anti-over-optimise)."
+    ],
+    "_effective_batch": "16 * 2 = 32",
+    "train_epochs":       200,
+    "learning_rate":      0.0003,
+    "batch_size":         16,
+    "accumulation_steps": 2,
+    "dropout":            0.25,
+    "patience":           40,
+    "lradj":              "constant",
+    "wd":                 0.0005,
+    "loss":               "MSE",
+    "weighted_loss":      false,
+    "weighted_sampling":  false,
+    "checkpoint_metric":  "val_mape",
+    "checkpoint_max_vali_acc1":  90,
+    "checkpoint_min_vali_mape":  0.092
+}

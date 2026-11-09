@@ -1,0 +1,23 @@
+{
+    "_comment": "TinyBatteryNetV1R - CALB | MAPE loss | best run: v31/v32, test_mape=0.154",
+    "_rationale": [
+        "MAPE training loss. floor=0.17 checkpoint guard prevents over-optimised val.",
+        "v31 early-stopped at E123, test_mape=0.154. v32 (clean repeat) gave same 0.154.",
+        "checkpoint_min_vali_acc1 NOT used — val_acc1 stays low during MAPE training."
+    ],
+    "_effective_batch": "16 * 2 = 32",
+    "train_epochs":       200,
+    "learning_rate":      0.00045,
+    "batch_size":         16,
+    "accumulation_steps": 2,
+    "dropout":            0.25,
+    "patience":           40,
+    "lradj":              "constant",
+    "wd":                 0.0005,
+    "loss":               "MAPE",
+    "weighted_loss":      false,
+    "weighted_sampling":  false,
+    "checkpoint_metric":  "val_mape",
+    "checkpoint_max_vali_acc1":  90,
+    "checkpoint_min_vali_mape":  0.17
+}

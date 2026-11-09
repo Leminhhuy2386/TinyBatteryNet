@@ -1,0 +1,23 @@
+{
+    "_comment": "TinyBatteryNetV1R — MIX_large v2: hyperparameter tuning only. d_model=64 + lstm_layers=1 from base config (fixed).",
+    "_rationale": [
+        "Model architecture is fixed: d_model=64, lstm_layers=1 per summary.md spec.",
+        "lr=0.0003: faster initial convergence; plateau scheduler reduces when stalled (fires at max(2,25//2)=12 epochs).",
+        "train_epochs=80: ~38 epochs in 8h walltime at 12.5 min/epoch (data-loading bottleneck, not compute).",
+        "patience=25: allows LR to halve twice (0.0003→0.00015→0.000075) for fine-grained convergence.",
+        "dropout=0.10: mild regularization for large mixed dataset.",
+        "batch_size=32: standard for GPU training with 200G RAM.",
+        "Target: test_mape < 0.179 (CPMLP paper benchmark)."
+    ],
+    "_effective_batch": "32 * 1 = 32",
+    "train_epochs":       80,
+    "learning_rate":      0.0003,
+    "batch_size":         32,
+    "accumulation_steps": 1,
+    "dropout":            0.10,
+    "patience":           25,
+    "lradj":              "plateau",
+    "wd":                 0.0001,
+    "loss":               "MAPE",
+    "weighted_loss":      true
+}

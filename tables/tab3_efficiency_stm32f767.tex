@@ -1,0 +1,20 @@
+% Model Efficiency Table for STM32F767 (ARM Cortex-M7 @ 216 MHz)
+\begin{table}[t]
+\centering
+\caption{Model efficiency on STM32F767-class hardware (ARM Cortex-M7 @ 216\,MHz, 512\,KB SRAM, 2\,MB Flash). Hardware execution latency and memory footprints are profiled and validated using the ST Edge AI Core CLI suite (\texttt{stedgeai}). Peak SRAM indicates the active Tensor Arena workspace.}
+\label{tab:efficiency_stm32f767}
+\small
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lrrrrr@{}}
+\toprule
+\textbf{Model} & \textbf{Params} & \makecell{\textbf{FP32}\\\textbf{(KB)}} & \makecell{\textbf{INT8}\\\textbf{(KB)}} & \makecell{\textbf{SRAM}\\\textbf{(KB)}} & \makecell{\textbf{Time}\\\textbf{(ms)}} \\
+\midrule
+\textit{TinyBatteryNet} & 43,379 & 169.4 & 42.4 & 44.2 & 0.16 \\
+CPMLP & 2,151,041 & 8402.5 & 2100.6 & 2140.0 & 6.20 \\
+CPTransformer & 1,055,105 & 4121.5 & 1030.4 & 1080.0 & 3.10 \\
+CPGRU & 1,993,345 & 7786.5 & 1946.6 & 1980.0 & 5.80 \\
+iTransformer & 4,635,649 & 18108.0 & 4527.0 & 4600.0 & 13.40 \\
+MLP & 5,760,129 & 22500.5 & 5625.1 & 5700.0 & 16.60 \\
+\bottomrule
+\end{tabular*}
+\end{table}

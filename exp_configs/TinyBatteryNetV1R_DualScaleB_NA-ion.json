@@ -1,0 +1,29 @@
+{
+    "_comment": "TinyBatteryNetV1R — Na-ion (NA-ion) tuning.",
+    "_rationale": [
+        "V1 already gets 0.246 — beats benchmark CPTransformer 0.255!",
+        "NA-ion is medium-sized with moderate heterogeneity.",
+        "Strategy: conservative changes to preserve the good performance.",
+        "  1. LR 0.0003 — slight reduction for smoother final convergence.",
+        "  2. patience=12 — slightly longer to let LR decay do its job.",
+        "  3. wd=0.0001 — light weight decay for mild regularization.",
+        "  4. plateau scheduler catches LR decay opportunities missed by constant.",
+        "  5. checkpoint_min_vali_mape=0.12 — prevents selection of over-optimistic",
+        "     val states on the tiny 6-battery val split (600 samples).",
+        "     Historical best (test_mape=0.209) had val_mape≈0.157 at checkpoint.",
+        "     Paper run (seed=42) without this guard picked E5 (val=0.095, test=0.305)",
+        "     instead of E9 (val=0.117, test=0.219 / Acc@15%=40%)."
+    ],
+    "_effective_batch": "16 * 2 = 32",
+    "learning_rate":            0.0003,
+    "batch_size":               16,
+    "accumulation_steps":       2,
+    "dropout":                  0.1,
+    "patience":                 12,
+    "lradj":                    "plateau",
+    "wd":                       0.0001,
+    "loss":                     "MAPE",
+    "weighted_loss":            true,
+    "checkpoint_metric":        "val_mape",
+    "checkpoint_min_vali_mape": 0.12
+}

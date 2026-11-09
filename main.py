@@ -1766,8 +1766,9 @@ def table2_main_comparison(log, best_ckpt_metrics):
     axes[0].text(-0.28, 1.10, "(b)", transform=axes[0].transAxes,
                  fontsize=11, fontweight="bold", va="top")
     plt.suptitle("MAPE: TinyBatteryNet vs. top baselines", fontsize=10, y=1.00)
-    fpath = os.path.join(FIGURES_DIR, "fig2_comparison_bar.png")
-    fig.savefig(fpath); plt.close(fig)
+    for ext in ("png", "pdf"):
+        fig.savefig(os.path.join(FIGURES_DIR, f"fig2_comparison_bar.{ext}"))
+    plt.close(fig)
     fig2_rows = []
     for domain in DOMAINS:
         for model in top_models:
@@ -1785,7 +1786,7 @@ def table2_main_comparison(log, best_ckpt_metrics):
         ["domain", "model", "mape", "source"],
         fig2_rows,
     )
-    print(f"   Figure → {fpath}")
+    print(f"   Figure → {os.path.join(FIGURES_DIR, 'fig2_comparison_bar.png')} / .pdf")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -1859,14 +1860,15 @@ def table3_efficiency():
             fill=False, edgecolor="#16A34A", linewidth=1.6,
             linestyle=(0, (5, 3)), zorder=6)
         ax.add_patch(_rect)
-    fpath = os.path.join(FIGURES_DIR, "fig3_efficiency.png")
-    fig.savefig(fpath); plt.close(fig)
+    for ext in ("png", "pdf"):
+        fig.savefig(os.path.join(FIGURES_DIR, f"fig3_efficiency.{ext}"))
+    plt.close(fig)
     _write_csv_rows(
         _figure_data_path("fig3_efficiency.csv"),
         ["model", "params", "fp32_kb", "int8_kb", "ram_kb", "int8_ms"],
         rows,
     )
-    print(f"   Figure → {fpath}")
+    print(f"   Figure → {os.path.join(FIGURES_DIR, 'fig3_efficiency.png')} / .pdf")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -1918,8 +1920,9 @@ def fig4_training_curves():
         print(f"   {domain}: {len(ep)} epochs from {c['source']}")
 
     plt.suptitle("TinyBatteryNet training curves", fontsize=11, y=1.01)
-    fpath = os.path.join(FIGURES_DIR, "fig4_training_curves.png")
-    fig.savefig(fpath); plt.close(fig)
+    for ext in ("png", "pdf"):
+        fig.savefig(os.path.join(FIGURES_DIR, f"fig4_training_curves.{ext}"))
+    plt.close(fig)
     fig4_rows = []
     for domain in present:
         c = curves[domain]
@@ -1937,7 +1940,7 @@ def fig4_training_curves():
         ["domain", "epoch", "train_loss", "val_mape", "test_mape", "source"],
         fig4_rows,
     )
-    print(f"   Figure → {fpath}")
+    print(f"   Figure → {os.path.join(FIGURES_DIR, 'fig4_training_curves.png')} / .pdf")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -2030,8 +2033,9 @@ def fig5_scatter(best_ckpt_metrics):
 
         data_source = "all seeds" if (all_preds_by_domain and all_preds_by_domain[domain]["preds"]) else "seed 42"
         plt.suptitle(f"Predicted vs. True RUL — TinyBatteryNet ({data_source})", fontsize=10, y=0.99)
-    fpath = os.path.join(FIGURES_DIR, "fig5_scatter.png")
-    fig.savefig(fpath); plt.close(fig)
+    for ext in ("png", "pdf"):
+        fig.savefig(os.path.join(FIGURES_DIR, f"fig5_scatter.{ext}"))
+    plt.close(fig)
     fig5_rows = []
     for domain in DOMAINS:
         if domain not in best_ckpt_metrics:
@@ -2067,7 +2071,7 @@ def fig5_scatter(best_ckpt_metrics):
         ["domain", "sample_index", "true_rul", "pred_rul", "abs_pct_error", "seen_unseen_id"],
         fig5_rows,
     )
-    print(f"   Figure → {fpath}")
+    print(f"   Figure → {os.path.join(FIGURES_DIR, 'fig5_scatter.png')} / .pdf")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -2166,8 +2170,9 @@ def fig6_error_distribution(best_ckpt_metrics):
 
     plt.suptitle("Absolute Percentage Error distribution — TinyBatteryNet",
                  fontsize=14, y=1.02)
-    fpath = os.path.join(FIGURES_DIR, "fig6_error_distribution.png")
-    fig.savefig(fpath); plt.close(fig)
+    for ext in ("png", "pdf"):
+        fig.savefig(os.path.join(FIGURES_DIR, f"fig6_error_distribution.{ext}"))
+    plt.close(fig)
     fig6_rows = []
     for domain in DOMAINS:
         if domain not in best_ckpt_metrics:
@@ -2197,7 +2202,7 @@ def fig6_error_distribution(best_ckpt_metrics):
         ["domain", "sample_index", "abs_pct_error", "abs_pct_error_capped", "cap_percentile_99"],
         fig6_rows,
     )
-    print(f"   Figure → {fpath}")
+    print(f"   Figure → {os.path.join(FIGURES_DIR, 'fig6_error_distribution.png')} / .pdf")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -2347,8 +2352,9 @@ def fig7_seen_unseen(log, best_ckpt_metrics):
                             f"{v:.3f}", ha="center", va="bottom", fontsize=9)
     # ax.text(-0.16, 1.06, "(g)", transform=ax.transAxes,
     #         fontsize=11, fontweight="bold", va="top")
-    fpath = os.path.join(FIGURES_DIR, "fig7_seen_unseen.png")
-    fig.savefig(fpath); plt.close(fig)
+    for ext in ("png", "pdf"):
+        fig.savefig(os.path.join(FIGURES_DIR, f"fig7_seen_unseen.{ext}"))
+    plt.close(fig)
     fig7_rows = []
     for domain in DOMAINS:
         fig7_rows.append({
@@ -2364,7 +2370,7 @@ def fig7_seen_unseen(log, best_ckpt_metrics):
         ["domain", "seen_mape_mean", "seen_mape_std", "unseen_mape_mean", "unseen_mape_std", "data_source"],
         fig7_rows,
     )
-    print(f"   Figure → {fpath}")
+    print(f"   Figure → {os.path.join(FIGURES_DIR, 'fig7_seen_unseen.png')} / .pdf")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -2595,8 +2601,9 @@ def fig8_ablation(best_ckpt_metrics):
         ax.text(-0.22, 1.10, f"({chr(97+i)})", transform=ax.transAxes,
                 fontsize=10, fontweight="bold", va="top")
     plt.suptitle("TinyBatteryNet ablation (post-hoc)", fontsize=11, y=1.03)
-    fpath = os.path.join(FIGURES_DIR, "fig8_ablation.png")
-    fig.savefig(fpath); plt.close(fig)
+    for ext in ("png", "pdf"):
+        fig.savefig(os.path.join(FIGURES_DIR, f"fig8_ablation.{ext}"))
+    plt.close(fig)
     fig8_rows = []
     for domain in ablation_domains:
         for variant_name in VARIANTS:
@@ -2612,7 +2619,7 @@ def fig8_ablation(best_ckpt_metrics):
         ["domain", "variant", "mape", "acc1"],
         fig8_rows,
     )
-    print(f"   Figure → {fpath}")
+    print(f"   Figure → {os.path.join(FIGURES_DIR, 'fig8_ablation.png')} / .pdf")
 
 
 # ─────────────────────────────────────────────────────────────────────────────

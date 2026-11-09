@@ -1,0 +1,18 @@
+{
+    "_comment": "MicroBatteryNet v2 — ~12 K params. PGSI + LPP + LRATE.",
+    "_effective_batch": "16 * 2 = 32",
+    "learning_rate":      0.0005,
+    "batch_size":         16,
+    "accumulation_steps": 2,
+    "d_model":            32,
+    "d_ff":               64,
+    "n_heads":            4,
+    "e_layers":           1,
+    "d_layers":           1,
+    "lstm_layers":        1,
+    "dropout":            0.08,
+    "patience":           10,
+    "patch_len":          150,
+    "stride":             150,
+    "num_workers":        8
+}

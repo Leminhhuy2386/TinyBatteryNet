@@ -1,0 +1,21 @@
+{
+    "_comment": "MicroBatteryNetV1R — base defaults (overridden by per-dataset files).",
+    "_comment2": "Shared: plateau scheduler, mild weight decay, longer patience vs V1.",
+    "_effective_batch": "32 * 1 = 32",
+    "learning_rate":      0.0005,
+    "batch_size":         32,
+    "accumulation_steps": 1,
+    "d_model":            32,
+    "d_ff":               8,
+    "n_heads":            4,
+    "e_layers":           1,
+    "d_layers":           1,
+    "lstm_layers":        1,
+    "dropout":            0.05,
+    "patience":           10,
+    "lradj":              "plateau",
+    "wd":                 0.0001,
+    "patch_len":          150,
+    "stride":             150,
+    "num_workers":        8
+}

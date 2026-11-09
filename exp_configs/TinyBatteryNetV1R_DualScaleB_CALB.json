@@ -1,0 +1,23 @@
+{
+    "_comment": "TinyBatteryNetV1R - CALB v34: MAPE loss, floor=0.17, patience=60.",
+    "_rationale": [
+        "v31 (MAPE, floor=0.17, patience=40): early stop at E123. Testing patience=60.",
+        "Longer patience allows model to explore beyond E123 and find better checkpoints.",
+        "floor=0.17 unchanged."
+    ],
+    "_effective_batch": "16 * 2 = 32",
+    "train_epochs":       200,
+    "learning_rate":      0.00045,
+    "batch_size":         16,
+    "accumulation_steps": 2,
+    "dropout":            0.25,
+    "patience":           60,
+    "lradj":              "constant",
+    "wd":                 0.0005,
+    "loss":               "MAPE",
+    "weighted_loss":      false,
+    "weighted_sampling":  false,
+    "checkpoint_metric":  "val_mape",
+    "checkpoint_max_vali_acc1":  90,
+    "checkpoint_min_vali_mape":  0.17
+}

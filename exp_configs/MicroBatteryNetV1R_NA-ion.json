@@ -1,0 +1,19 @@
+{
+    "_comment": "MicroBatteryNetV1R — Na-ion (NA-ion) tuning.",
+    "_rationale": [
+        "V1 already gets 0.221 — comfortably beats benchmark CPTransformer 0.255!",
+        "Strategy: minimal changes, just stabilise training with plateau + wd.",
+        "  1. LR 0.0003 — small reduction for cleaner convergence.",
+        "  2. patience=12 — slightly longer.",
+        "  3. wd=0.0001 — light regularization.",
+        "  Do NOT change batch_size or dropout — model already generalises well here."
+    ],
+    "_effective_batch": "32 * 1 = 32",
+    "learning_rate":      0.0003,
+    "batch_size":         32,
+    "accumulation_steps": 1,
+    "dropout":            0.05,
+    "patience":           12,
+    "lradj":              "plateau",
+    "wd":                 0.0001
+}

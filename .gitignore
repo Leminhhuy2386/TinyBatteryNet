@@ -1,4 +1,26 @@
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 .DS_Store
+
+# Checkpoints and weights
+*.pt
+*.pth
+*.ckpt
+checkpoints/
+
+# Data and caches
+data/
+dataset/
+*.npy
+*.npz
+*.joblib
+pred_cache.json
+
+# Logs and training outputs
+logs/
+log/
+outs/
+wandb/
+.venv/

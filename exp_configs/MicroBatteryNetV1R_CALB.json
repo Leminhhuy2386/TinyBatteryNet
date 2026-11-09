@@ -1,0 +1,22 @@
+{
+    "_comment": "MicroBatteryNetV1R — CALB tuning.",
+    "_rationale": [
+        "V1 gets 0.220 vs benchmark CPMLP 0.140 — gap = 0.080 (largest for Micro).",
+        "CALB is small and clean; the gap suggests underfitting or premature stopping.",
+        "Strategy:",
+        "  1. LR 0.0002 — lower LR for more careful gradient steps on clean data.",
+        "  2. batch_size=16 — halved from 32 for better gradient signal on small dataset.",
+        "  3. accum_steps=2 — keep effective batch=32.",
+        "  4. dropout=0.1 — increased from 0.05 to prevent memorisation.",
+        "  5. patience=15 — longer: plateau scheduler needs more steps to converge.",
+        "  6. wd=0.0005 — meaningful L2 regularization."
+    ],
+    "_effective_batch": "16 * 2 = 32",
+    "learning_rate":      0.0002,
+    "batch_size":         16,
+    "accumulation_steps": 2,
+    "dropout":            0.1,
+    "patience":           15,
+    "lradj":              "plateau",
+    "wd":                 0.0005
+}

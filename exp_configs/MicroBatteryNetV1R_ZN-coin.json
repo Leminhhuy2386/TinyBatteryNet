@@ -1,0 +1,22 @@
+{
+    "_comment": "MicroBatteryNetV1R — Zn-ion (ZN-coin) tuning.",
+    "_rationale": [
+        "V1 gets 1.784 vs benchmark CPTransformer 0.515 — catastrophic gap (1.27).",
+        "MicroV1 is even more prone to overfitting on this tiny heterogeneous dataset",
+        "because it has fewer parameters and less capacity to handle distribution shift.",
+        "Fixes:",
+        "  1. LR 0.0001 — very low to avoid divergence on noisy Zn-ion landscape.",
+        "  2. batch_size=16 + accum=2 — smaller batch, same effective size for BN.",
+        "  3. dropout=0.15 — strong regularization for the micro architecture.",
+        "  4. wd=0.001 — L2 weight decay.",
+        "  5. patience=20 — long patience since plateaus are common on ZN-coin."
+    ],
+    "_effective_batch": "16 * 2 = 32",
+    "learning_rate":      0.0001,
+    "batch_size":         16,
+    "accumulation_steps": 2,
+    "dropout":            0.15,
+    "patience":           20,
+    "lradj":              "plateau",
+    "wd":                 0.001
+}

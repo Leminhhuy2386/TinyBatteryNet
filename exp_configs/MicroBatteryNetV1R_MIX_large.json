@@ -1,0 +1,16 @@
+{
+    "_comment": "MicroBatteryNetV1R — Li-ion (MIX_large) tuning.",
+    "_rationale": [
+        "V1 already gets 0.178 — beats benchmark CPMLP 0.179.",
+        "Keep LR and batch the same; add plateau and mild wd to preserve performance.",
+        "Slight dropout increase for better generalisation on the diverse mix."
+    ],
+    "_effective_batch": "32 * 1 = 32",
+    "learning_rate":      0.0005,
+    "batch_size":         32,
+    "accumulation_steps": 1,
+    "dropout":            0.08,
+    "patience":           12,
+    "lradj":              "plateau",
+    "wd":                 0.0001
+}

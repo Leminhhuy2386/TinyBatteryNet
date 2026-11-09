@@ -1,0 +1,18 @@
+% INT8 Quantization Evaluation Table
+\begin{table}[htbp]
+\centering
+\caption{Impact of post-training INT8 dynamic quantization on prediction accuracy and memory footprint across chemistry domains.}
+\label{tab:int8_quantization}
+\begin{tabular}{l ccc ccc}
+\toprule
+Domain & \multicolumn{3}{c}{FP32 Baseline} & \multicolumn{3}{c}{INT8 Quantized} \\
+\cmidrule(lr){2-4} \cmidrule(lr){5-7}
+ & Size (KB) & MAPE (\%) & Acc@15\% & Size (KB) & MAPE (\%) & Acc@15\% \\
+\midrule
+Li-ion & 182.1 & 16.40 & 63.0\% & 62.7 & 16.31 & 63.5\% \\
+CALB & 182.1 & 12.32 & 67.8\% & 62.7 & 11.52 & 71.2\% \\
+Na-ion & 182.1 & 23.20 & 40.0\% & 62.7 & 23.37 & 40.0\% \\
+Zn-ion & 182.1 & 37.70 & 19.1\% & 62.7 & 37.00 & 24.1\% \\
+\bottomrule
+\end{tabular}
+\end{table}

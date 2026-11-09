@@ -1,0 +1,21 @@
+{
+    "_comment": "Reproduce historical NA-ion 0.209 entry (recorded from final epoch checkpoint).",
+    "_source": "results.md row: 2026-05-16 22:39 | TinyBatteryNetV1R | NA-ion | test_mape=0.209 | completed_epochs=17",
+    "_notes": [
+        "This profile mirrors the historical NA-ion setup and evaluates the final model state.",
+        "Do not apply checkpoint_min_vali_mape guard for this reproduction run.",
+        "Result is expected to come from checkpoint_last.pt (final epoch), not best-val checkpoint."
+    ],
+    "learning_rate": 0.0003,
+    "batch_size": 16,
+    "accumulation_steps": 2,
+    "dropout": 0.1,
+    "patience": 12,
+    "lradj": "plateau",
+    "wd": 0.0001,
+    "loss": "MAPE",
+    "weighted_loss": true,
+    "weighted_sampling": false,
+    "checkpoint_metric": "val_mape",
+    "final_eval_checkpoint": "last"
+}

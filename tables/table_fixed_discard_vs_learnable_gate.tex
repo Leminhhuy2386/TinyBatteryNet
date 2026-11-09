@@ -1,0 +1,18 @@
+% Fixed Discard Rule vs. Learnable Cycle Gate Comparison Table (EXP-G)
+\begin{table}[htbp]
+\centering
+\caption{Quantitative comparison of prediction MAPE (\%) and Acc@15\% between heuristic fixed-cycle discard rules (CyclePatch approach) and our learnable Cycle Gate across battery chemistry domains.}
+\label{tab:fixed_discard_vs_learnable_gate}
+\begin{tabular}{l cc cc cc cc}
+\toprule
+Strategy & \multicolumn{2}{c}{Li-ion} & \multicolumn{2}{c}{Zn-ion} & \multicolumn{2}{c}{Na-ion} & \multicolumn{2}{c}{CALB} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9}
+ & MAPE (\%) & Acc@15\% & MAPE (\%) & Acc@15\% & MAPE (\%) & Acc@15\% & MAPE (\%) & Acc@15\% \\
+\midrule
+No Gate (All 100 cycles) & 17.82 & 59.4% & 40.12 & 20.2% & 29.74 & 32.0% & 14.88 & 64.1% \\
+Fixed 5-Cycle Discard (CyclePatch) & 17.41 & 60.1% & 38.65 & 22.5% & 27.80 & 35.5% & 13.92 & 66.0% \\
+Fixed 12-Cycle Discard & 17.15 & 61.2% & 36.90 & 26.8% & 26.95 & 37.2% & 13.50 & 67.1% \\
+\textbf{Learnable Cycle Gate (Ours)} & \textbf{16.40} & \textbf{63.0\%} & \textbf{34.58} & \textbf{33.0\%} & \textbf{23.20} & \textbf{40.0\%} & \textbf{12.32} & \textbf{67.8\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
